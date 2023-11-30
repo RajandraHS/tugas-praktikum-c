@@ -1,0 +1,89 @@
+#include <stdio.h>
+
+#define SIZE 11
+
+void printArray(int A[]) {
+    for (int i = 0; i < SIZE; i++) {
+        if (A[i] == 0) {
+            printf("[ ] ");
+        } else {
+            printf("[ %d ] ", A[i]);
+        }
+    }
+    printf("\n");
+}
+
+void inputDataA(int A[], int data) {
+    for (int i = 0; i < SIZE; i++) {
+        if (A[i] == 0) {
+            A[i] = data;
+            break;
+        }
+    }
+}
+
+void inputDataB(int A[], int data) {
+    for (int i = 0; i < SIZE; i += 2) {
+        if (A[i] == 0 && data > 9) {
+            A[i] = data;
+            break;
+        }
+    }
+}
+
+void inputDataC(int A[], int data) {
+    for (int i = 0; i < SIZE; i++) {
+        if (A[i] == 0 && data > 9) {
+            A[i] = data;
+            break;
+        }
+    }
+}
+
+void inputDataD(int A[], int data) {
+    for (int i = 0; i < SIZE; i++) {
+        if (A[i] == 0 && data % 2 != 0 && data != 999) {
+            A[i] = data;
+            break;
+        }
+    }
+}
+
+void inputDataE(int A[], int data) {
+    for (int i = 1; i < SIZE; i += 2) {
+        if (A[i] == 0 && data % 2 != 0 && data != 999) {
+            A[i] = data;
+            break;
+        }
+    }
+}
+
+int main() {
+    int A[SIZE] = {0};
+
+    int data;
+    printf("Masukkan data (999 untuk berhenti): ");
+    scanf("%d", &data);
+
+    while (data != 999) {
+        inputDataA(A, data);
+        printArray(A);
+
+        inputDataB(A, data);
+        printArray(A);
+
+        inputDataC(A, data);
+        printArray(A);
+
+        inputDataD(A, data);
+        printArray(A);
+
+        inputDataE(A, data);
+        printArray(A);
+
+        printf("Masukkan data (999 untuk berhenti): ");
+        scanf("%d", &data);
+    }
+
+    return 0;
+}
